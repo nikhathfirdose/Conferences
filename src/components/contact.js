@@ -1,5 +1,9 @@
 import React from "react";
 
+function cleanupUrl(url) {
+  return url.replace(/(^")|("$)/g, "");
+}
+
 const Conferences = ({ conferences }) => {
   return (
     <div>
@@ -8,7 +12,7 @@ const Conferences = ({ conferences }) => {
           <div className="card-body">
             <img
               className="image"
-              src={conference.imageURL}
+              src={cleanupUrl(conference.imageURL)}
               alt="Conference Poster"
             />
             <h5 className="conf-date">Date: {conference.confStartDate}</h5>
