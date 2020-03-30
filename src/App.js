@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import Contacts from "./components/contact";
+import Header from "./components/heading";
 
 class App extends Component {
-  state = {
-    contacts: []
-  };
+  constructor() {
+    super();
+    this.state = {
+      contacts: []
+    };
+  }
+
   componentDidMount() {
     fetch(
       "https://o136z8hk40.execute-api.us-east-1.amazonaws.com/dev/get-list-of-conferences"
@@ -18,7 +23,11 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Contacts contacts={this.state.contacts} />
+        <Header />
+        <Contacts
+          key={this.state.contacts.conference_id}
+          contacts={this.state.contacts}
+        />
       </div>
     );
   }

@@ -3,9 +3,9 @@ import React from "react";
 const Contacts = ({ contacts }) => {
   return (
     <div>
-      <center>
+      {/* <center>
         <h1>Conferences</h1>
-      </center>
+      </center> */}
       {contacts.map(contact => (
         <div class="card">
           <div class="card-body">
