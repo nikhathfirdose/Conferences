@@ -8,6 +8,7 @@ function Header() {
         className="contact"
         href="https://konfhub.com/allconferences.html"
         target="_blank"
+        rel="noopener noreferrer"
       >
         Contact Us
       </a>
