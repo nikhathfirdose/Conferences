@@ -1,28 +1,38 @@
 import React, { Component } from "react";
 
-class Header extends Component {
-  constructor() {
-    super();
-    this.state = {
-      search: ""
-    };
-  }
-  updateSearch(event) {
-    this.setState({ search: event.target.value.substr(0, 30) });
-  }
+export default class MyFilteringComponent extends React.Component {
+  state = {
+    initialItems: [],
+    items: []
+  };
+
+  filterList = event => {
+    let items = this.state.initialItems;
+    items = items.filter(item => {
+      return item.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
+    });
+    this.setState({ items: items });
+  };
+
+  componentWillMount = () => {
+    this.setState({
+      initialItems: this.props.content,
+      items: this.props.content
+    });
+  };
+
   render() {
     return (
       <div>
-        <center>
-          <h1>Conferences</h1>
-        </center>
-        <input
-          type="text"
-          value={this.state.search}
-          onChange={this.updateSearch.bind(this)}
-        />
+        <form>
+          <input type="text" placeholder="Search" onChange={this.filterList} />
+        </form>
+        <div>
+          {this.state.items.map(function(item) {
+            return <div>{item}</div>;
+          })}
+        </div>
       </div>
     );
   }
 }
-export default Header;

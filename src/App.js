@@ -1,13 +1,45 @@
 import React, { Component } from "react";
-import Contacts from "./components/contact";
-import Header from "./components/heading";
+import Conferences from "./components/contact";
+import SearchField from "react-search-field";
+//
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      contacts: []
+      conferences: [],
+      search: "",
+      filterCity: null,
+      filterMonth: null,
+      filterFreeOrPaid: null,
+      filterCountry: null
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.filterConferences = this.filterConferences.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({ search: e });
+    this.componentDidMount();
+  }
+
+  filterConferences(conf) {
+    var confs =
+      conf.city.toLowerCase().match(this.state.search.toLowerCase()) ||
+      conf.confName.toLowerCase().match(this.state.search.toLowerCase());
+    if (this.state.filterCity) {
+      confs = conf.city == this.state.filterCity;
+    }
+    // if (this.state.filterMonth) {
+    //   confs = conf.month == this.state.filterMonth;
+    // }
+    if (this.state.filterFreeOrPaid) {
+      confs = conf.entryType == this.state.filterFreeOrPaid;
+    }
+    if (this.state.filterCountry) {
+      confs = conf.country == this.state.filterCountry;
+    }
+    return confs;
   }
 
   componentDidMount() {
@@ -15,18 +47,30 @@ class App extends Component {
       "https://o136z8hk40.execute-api.us-east-1.amazonaws.com/dev/get-list-of-conferences"
     )
       .then(res => res.json())
-      .then(data => {
-        this.setState({ contacts: data.paid });
+      .then(Confs => Confs.paid.concat(Confs.free))
+      .then(allConfs => allConfs.filter(this.filterConferences))
+      .then(filteredConfs => {
+        this.setState({
+          conferences: filteredConfs.sort(
+            (a, b) => Date.parse(a.confStartDate) - Date.parse(b.confStartDate)
+          )
+        });
       })
       .catch(console.log);
   }
   render() {
     return (
       <div>
-        <Header />
-        <Contacts
-          key={this.state.contacts.conference_id}
-          contacts={this.state.contacts}
+        <SearchField
+          placeholder="Search..."
+          onChange={this.handleChange}
+          className="test-class"
+        />
+        {/* <Filter /> */}
+        {/* <p>{this.state.search}</p> */}
+        <Conferences
+          key={this.state.conferences.conference_id}
+          conferences={this.state.conferences}
         />
       </div>
     );
