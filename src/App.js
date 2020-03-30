@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Conferences from "./components/contact";
 import SearchField from "react-search-field";
-//
+import Header from "./components/heading";
+import "./components/style.css";
+// import Filter from "./components/Filter";
 
 class App extends Component {
   constructor(props) {
@@ -61,13 +63,13 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Header />
         <SearchField
-          placeholder="Search..."
+          placeholder="Search by city or conference-name"
           onChange={this.handleChange}
           className="test-class"
         />
         {/* <Filter /> */}
-        {/* <p>{this.state.search}</p> */}
         <Conferences
           key={this.state.conferences.conference_id}
           conferences={this.state.conferences}

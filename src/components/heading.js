@@ -1,38 +1,17 @@
 import React, { Component } from "react";
 
-export default class MyFilteringComponent extends React.Component {
-  state = {
-    initialItems: [],
-    items: []
-  };
-
-  filterList = event => {
-    let items = this.state.initialItems;
-    items = items.filter(item => {
-      return item.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
-    });
-    this.setState({ items: items });
-  };
-
-  componentWillMount = () => {
-    this.setState({
-      initialItems: this.props.content,
-      items: this.props.content
-    });
-  };
-
-  render() {
-    return (
-      <div>
-        <form>
-          <input type="text" placeholder="Search" onChange={this.filterList} />
-        </form>
-        <div>
-          {this.state.items.map(function(item) {
-            return <div>{item}</div>;
-          })}
-        </div>
-      </div>
-    );
-  }
+function Header() {
+  return (
+    <div className="head">
+      <h1 className="heading">Konfhub Conferences </h1>
+      <a
+        className="contact"
+        href="https://konfhub.com/allconferences.html"
+        target="_blank"
+      >
+        Contact Us
+      </a>
+    </div>
+  );
 }
+export default Header;

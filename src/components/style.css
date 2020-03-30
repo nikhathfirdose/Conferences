@@ -1,0 +1,22 @@
+body {
+  margin: 5px;
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+  /* background-color: "";
+  color: ""; */
+}
+.heading {
+  font-family: "New, Courier, monospace";
+}
+.contact {
+  font-weight: normal;
+  text-decoration: none;
+  color: black;
+  font-size: 22px;
+}
+.test-class {
+  margin-top: 35px;
+  width: 300px;
+}
