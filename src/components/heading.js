@@ -1,17 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 
 function Header() {
   return (
     <div className="head">
       <h1 className="heading">Konfhub Conferences </h1>
-      <a
-        className="contact"
-        href="https://konfhub.com/allconferences.html"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Contact Us
-      </a>
     </div>
   );
 }
