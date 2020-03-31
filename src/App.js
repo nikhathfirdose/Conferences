@@ -30,16 +30,16 @@ class App extends Component {
       conf.city.toLowerCase().match(this.state.search.toLowerCase()) ||
       conf.confName.toLowerCase().match(this.state.search.toLowerCase());
     if (this.state.filterCity) {
-      confs = conf.city == this.state.filterCity;
+      confs = conf.city === this.state.filterCity;
     }
     // if (this.state.filterMonth) {
     //   confs = conf.month == this.state.filterMonth;
     // }
     if (this.state.filterFreeOrPaid) {
-      confs = conf.entryType == this.state.filterFreeOrPaid;
+      confs = conf.entryType === this.state.filterFreeOrPaid;
     }
     if (this.state.filterCountry) {
-      confs = conf.country == this.state.filterCountry;
+      confs = conf.country === this.state.filterCountry;
     }
     return confs;
   }
@@ -65,9 +65,9 @@ class App extends Component {
       <div>
         <Header />
         <SearchField
-          placeholder="Search by city or conference-name"
+          placeholder="Search by name or city"
           onChange={this.handleChange}
-          className="test-class"
+          id="search"
         />
         {/* <Filter /> */}
         <Conferences
