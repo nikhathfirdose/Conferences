@@ -19,9 +19,10 @@ const Conferences = ({ conferences }) => {
               {""}
               {conference.confName}
             </h5>
+
             <p className="conf-entry">{conference.entryType}</p>
           </div>
-          <div className="details">
+          <div className="description">
             <p className="conf-date">
               {" "}
               <img
@@ -39,15 +40,16 @@ const Conferences = ({ conferences }) => {
               />{" "}
               {conference.city}, {conference.country}
             </p>
-
-            <a
-              className="details"
-              href={conference.confUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Read More
-            </a>
+            <div>
+              <a
+                className="details"
+                href={conference.confUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Learn More
+              </a>
+            </div>
           </div>
         </div>
       ))}
