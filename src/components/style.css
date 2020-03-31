@@ -89,3 +89,19 @@ body {
   color: white;
   padding: 4px;
 }
+.box {
+  display: flex;
+  justify-content: space-between;
+}
+.filter-items {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 22px;
+}
+.filter-items input {
+  padding: 0px 5px;
+  height: 23px;
+}
+.filter-items span {
+  padding-right: 8px;
+}

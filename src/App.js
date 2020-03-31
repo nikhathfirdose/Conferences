@@ -3,7 +3,7 @@ import Conferences from "./components/contact";
 import SearchField from "react-search-field";
 import Header from "./components/heading";
 import "./components/style.css";
-// import Filter from "./components/Filter";
+import Filter from "./components/Filter";
 
 class App extends Component {
   constructor(props) {
@@ -64,11 +64,14 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <SearchField
-          placeholder="Search by name or city"
-          onChange={this.handleChange}
-        />
-        {/* <Filter /> */}
+        <div className="box">
+          <SearchField
+            placeholder="Search by Name or City"
+            onChange={this.handleChange}
+          />
+          <Filter />
+          {/* onChange={this.filterConferences} */}
+        </div>
         <Conferences
           key={this.state.conferences.conference_id}
           conferences={this.state.conferences}
