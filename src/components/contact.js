@@ -6,31 +6,47 @@ function cleanupUrl(url) {
 
 const Conferences = ({ conferences }) => {
   return (
-    <div>
+    <div className="card-container">
       {conferences.map(conference => (
-        <div className="card">
-          <div className="card-body">
-            <img
-              className="image"
-              src={cleanupUrl(conference.imageURL)}
-              alt="Conference Poster"
-            />
-            <h5 className="conf-date">Date: {conference.confStartDate}</h5>
-            <h6 className="conf-name">
-              Conference Name: {conference.confName}
-            </h6>
+        <div className="card-body">
+          <img
+            className="image"
+            src={cleanupUrl(conference.imageURL)}
+            alt="Conference Poster"
+          />
+          <div className="intro">
+            <h5 className="conf-name">
+              {""}
+              {conference.confName}
+            </h5>
             <p className="conf-entry">{conference.entryType}</p>
+          </div>
+          <div className="details">
+            <p className="conf-date">
+              {" "}
+              <img
+                src="https://i.postimg.cc/gkhhtgdR/Business-Overtime-icon.png"
+                alt="date"
+              />
+              {"  "}
+              {conference.confStartDate} - {conference.confEndDate}
+            </p>
             <p className="location">
               {" "}
-              Location: {conference.city}, {conference.country}
+              <img
+                src="https://i.postimg.cc/2yKsK4p9/Location-Map-icon.png"
+                alt="location"
+              />{" "}
+              {conference.city}, {conference.country}
             </p>
+
             <a
               className="details"
               href={conference.confUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Read More{" "}
+              Read More
             </a>
           </div>
         </div>
