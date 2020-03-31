@@ -67,7 +67,6 @@ class App extends Component {
         <SearchField
           placeholder="Search by name or city"
           onChange={this.handleChange}
-          id="search"
         />
         {/* <Filter /> */}
         <Conferences
